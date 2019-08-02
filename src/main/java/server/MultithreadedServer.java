@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class MultithreadedServer {
-    public static HistoryLog logger;
+    static HistoryLog logger;
 
     static {
         try {
@@ -30,14 +30,5 @@ public class MultithreadedServer {
                 }
             }
         }).start();
-        new Thread(() -> {
-            try {
-                while (Thread.activeCount() > 1) {
-                }
-                logger.closeFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 }
